@@ -3,7 +3,7 @@ import Navbar from "../pages/Shared/Navbar/Navbar";
 
 const Root = () => {
     return (
-        <div>
+        <div className="font-noto">
             <Navbar></Navbar>
             <Outlet></Outlet>
         </div>

@@ -28,7 +28,7 @@ const Banner = () => {
                             <img className='w-full h-full object-cover' src="https://i.ibb.co/BgCMgny/news-paper-3.jpg" alt="" />
                             <div className='absolute top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] h-full p-12 md:p-24'>
                                 <h2 className='w-[90%] md:w-[450px] text-teal-500 text-4xl md:text-6xl font-bold'>Explore What is Happening Around the Globe!</h2>
-                                <p className='w-full md:w-[85%] lg:w-[60%] mt-6 text-white'>Embark on a journey of discovery with our dynamic news blog, where every click unveils the latest in global events, politics, technology, and culture. Our team of seasoned journalists brings you comprehensive coverage, offering context, analysis, and diverse perspectives to keep you informed and engaged. our platform is your gateway to staying ahead in an ever-evolving world.</p>
+                                <p className='w-full md:w-[85%] lg:w-[60%] mt-4 text-white'>Embark on a journey of discovery with our dynamic news blog, where every click unveils the latest in global events, politics, technology, and culture. Our team of seasoned journalists brings you comprehensive coverage, offering context, analysis, and so on. our platform is your gateway to staying ahead in an ever-evolving world.</p>
                             </div>
                         </div>
                     </SwiperSlide>
@@ -37,7 +37,7 @@ const Banner = () => {
                             <img className='w-full h-full object-cover' src="https://i.ibb.co/SNbc7Jf/blog-banner-1.jpg" alt="" />
                             <div className='absolute top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] h-full p-12 md:p-24'>
                                 <h2 className='w-[90%] md:w-[450px] text-teal-500 text-4xl md:text-6xl font-bold'>Stay Informed with Our Latest Updates!</h2>
-                                <p className='w-full md:w-[85%] lg:w-[60%] mt-6 text-white'>Step into a world of insight and exploration with our meticulously curated news blog, your passport to the pulse of our planet. From the corridors of power to the frontiers of innovation, we deliver the stories that shape our collective narrative. With a commitment to accuracy, integrity, and diversity of thought, we invite you to join us on a journey of discovery, dialogue, and enlightenment.</p>
+                                <p className='w-full md:w-[85%] lg:w-[60%] mt-6 text-white'>Step into a world of insight and exploration with our meticulously curated news blog, your passport to the pulse of our planet. From the corridors of power to the frontiers of innovation. With a commitment to accuracy, integrity, and diversity of thought, we invite you to join us on a journey of discovery, dialogue, and enlightenment.</p>
                             </div>
                         </div>
                     </SwiperSlide>

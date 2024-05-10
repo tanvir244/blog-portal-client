@@ -6,10 +6,8 @@ export default {
   ],
   theme: {
     extend: {
-      extend: {
-        fontFamily: {
-          notoSerif : "Noto Serif"
-        }
+      fontFamily: {
+        noto: '"Noto Serif"'
       }
     },
   },
