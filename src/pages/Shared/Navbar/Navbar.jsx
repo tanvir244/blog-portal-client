@@ -11,6 +11,9 @@ const Navbar = () => {
 
     return (
         <div className="bg-base-300">
+            <div className="text-center pt-8 pb-4">
+                <a href="/" className="text-black text-4xl md:text-5xl font-bold">Blog <span className="text-red-600">Portal</span></a>
+            </div>
             <div className="navbar max-w-6xl mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -21,15 +24,16 @@ const Navbar = () => {
                             {navLinks}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">Blog Portal</a>
+                    {/* <a className="text-black text-2xl font-bold">Blog <span className="text-red-600">Portal</span></a> */}
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {navLinks}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn">Button</a>
+                <div className="navbar-end gap-4">
+                    <a className="btn font-bold">Sign In</a>
+                    <a className="btn font-bold">Sign Up</a>
                 </div>
             </div>
         </div>
