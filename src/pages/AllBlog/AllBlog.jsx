@@ -7,8 +7,8 @@ import Swal from "sweetalert2";
 const AllBlog = () => {
     const { user } = useAuth();
     const blogDetails = useLoaderData();
-    const { _id, title, short_description, long_description, category, image } = blogDetails;
-    // console.log(blogDetails)
+    const { _id, title, email, short_description, long_description, category, image } = blogDetails;
+    console.log(blogDetails);
     const [commentValue, setCommentValue] = useState([]);
     const [allComments, setAllComments] = useState([]);
 
@@ -39,19 +39,13 @@ const AllBlog = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
+                    console.log(data);
+                    // Add the new comment to the existing comments list
+                    setAllComments([...allComments, comment]);
+                    // Reset the input field after successful submission
+                    setCommentValue("");
                 })
         }
-        else {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Comment length should at least one character",
-              });
-        }
-
-        // Reset the input field after getting its value
-        setCommentValue("");
     }
 
     return (
@@ -73,17 +67,29 @@ const AllBlog = () => {
                 <h2 className="mb-8 font-bold text-lg">All Comments</h2>
                 <div className="flex gap-4 mb-2">
                     <img className="w-16 h-16 rounded-full" src={user?.photoURL || "https://i.ibb.co/TmsrwQs/user.png"} alt="" />
-                    <input
-                        className="text-black p-4 border-b-2 border-b-black w-full"
-                        type="text"
-                        name="comment"
-                        placeholder="comment here"
-                        value={commentValue}
-                        onChange={(e) => setCommentValue(e.target.value)}
-                    />
+
+                    {user ? (
+                        user?.email === blogDetails.email ? (
+                            <input
+                                className="text-black p-4 border-b-2 border-b-black w-full"
+                                type="text"
+                                name="comment"
+                                placeholder="Comment here"
+                                value={commentValue}
+                                onChange={(e) => setCommentValue(e.target.value)}
+                            />
+                        ) : (
+                            <p className="flex items-center">You cannot comment on your own blog</p>
+                        )
+                    ) : (
+                        <p className="flex items-center">Login first to comment</p>
+                    )}
+
                 </div>
                 <div className="flex justify-end mb-2">
-                    <button onClick={handleComment} className="btn w-28 bg-black text-white rounded-lg">Submit</button>
+                    <button onClick={handleComment} className="btn w-28 bg-black text-white rounded-lg">
+                        Submit
+                    </button>
                 </div>
                 <div className="space-y-8">
                     {
