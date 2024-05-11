@@ -7,7 +7,7 @@ const AllBlogs = ({ allBlogs }) => {
         <div className="card card-compact bg-base-100 shadow-2xl">
             <figure><img className="w-full h-[192px] object-cover" src={image} alt="Shoes" /></figure>
             <div className="card-body">
-                <h2 className="card-title text-base font-bold">{title}</h2>
+                <h2 className="card-title text-base font-bold">{title || <Skeleton />}</h2>
                 <span className="w-[30%] text-center bg-red-600 text-white px-2 py-1 rounded-lg text-xs font-semibold">{category}</span>
                 {/* <p>{short_description}</p> */}
                 {

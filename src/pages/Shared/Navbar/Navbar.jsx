@@ -1,6 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
+    const { user, logOut } = useAuth();
+    const handleLogout = () => {
+        logOut()
+            .then()
+            .catch()
+    }
+
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/add_blog">Add Blog</NavLink></li>
@@ -31,9 +39,23 @@ const Navbar = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <div className="navbar-end gap-2">
-                    <Link to="/sign_in" className="btn bg-black text-white hover:bg-white hover:text-black font-semibold">Sign In</Link>
-                    <Link to="/sign_up" className="btn bg-black text-white hover:bg-white hover:text-black font-semibold">Sign Up</Link>
+                <div className="navbar-end gap-3">
+                    {user ? (
+                        <div className="w-12 h-12">
+                            <img className="w-full h-full object-cover rounded-full cursor-pointer mb-2" src={user?.photoURL || "https://i.ibb.co/TmsrwQs/user.png"} alt="" />
+                        </div>
+                    ) : (
+                        <div className="flex gap-2">
+                            <Link to="/sign_in" className="btn bg-black text-white hover:bg-white hover:text-black font-semibold">Sign In</Link>
+                            <Link to="/sign_up" className="btn bg-black text-white hover:bg-white hover:text-black font-semibold">Sign Up</Link>
+                        </div>
+                    )
+                    }
+                    {user && (
+                        <button onClick={handleLogout} className="btn bg-black text-white hover:bg-white hover:text-black font-semibold">Sign Out</button>
+                    )}
+                    {/* <Link to="/sign_in" className="btn bg-black text-white hover:bg-white hover:text-black font-semibold">Sign In</Link>
+                    <Link to="/sign_up" className="btn bg-black text-white hover:bg-white hover:text-black font-semibold">Sign Up</Link> */}
                 </div>
             </div>
         </div>

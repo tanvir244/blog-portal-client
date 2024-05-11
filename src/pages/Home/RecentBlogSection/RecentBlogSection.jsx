@@ -7,7 +7,9 @@ const RecentBlogSection = () => {
     useEffect(() => {
         fetch('http://localhost:5000/recent_blogs')
         .then(res => res.json())
-        .then(data => setRecentBlogs(data))
+        .then(data => {
+            setRecentBlogs(data);
+        })
     }, [])
 
     return (
