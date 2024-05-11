@@ -1,12 +1,14 @@
 import Footer from "../../Shared/Footer/Footer";
 import Banner from "../Banner/Banner";
-import RecentBlogs from "../RecentBlogs/RecentBlogs";
+import RecentBlogSection from "../RecentBlogSection/RecentBlogSection";
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <RecentBlogs></RecentBlogs>
+            <div className="w-[90%] max-w-6xl mx-auto">
+                <RecentBlogSection></RecentBlogSection>
+            </div>
             <Footer></Footer>
         </div>
     );

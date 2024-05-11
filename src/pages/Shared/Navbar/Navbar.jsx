@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const navLinks = <>
-        <li><NavLink to="/home">Home</NavLink></li>
+        <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/add_blog">Add Blog</NavLink></li>
         <li><NavLink to="/all_blogs">All Blogs</NavLink></li>
         <li><NavLink to="/featured_blogs">Featured Blogs</NavLink></li>
