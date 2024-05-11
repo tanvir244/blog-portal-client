@@ -3,6 +3,9 @@ import Root from "../layout/Root";
 import Home from "../pages/Home/Home/Home";
 import RecentBlogDetail from "../pages/Home/RecentBlogDetail/RecentBlogDetail";
 import AddBlog from "../pages/AddBlog/AddBlog";
+import AllBlogSection from "../pages/AllBlogSection/AllBlogSection";
+import AllBlogs from "../pages/AllBlogs/AllBlogs";
+import AllBlog from "../pages/AllBlog/AllBlog";
 
 
 const routes = createBrowserRouter([
@@ -22,6 +25,16 @@ const routes = createBrowserRouter([
         {
             path: '/add_blog',
             element: <AddBlog></AddBlog>
+        },
+        {
+          path: '/all_blogs',
+          element: <AllBlogSection></AllBlogSection>,
+          loader: () => fetch('http://localhost:5000/add_blog')
+        },
+        {
+          path: '/added_blog/:id',
+          element: <AllBlog></AllBlog>,
+          loader: ({params}) => fetch(`http://localhost:5000/add_blog/${params.id}`)
         }
       ]
     },
