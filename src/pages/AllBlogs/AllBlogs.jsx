@@ -11,8 +11,8 @@ const AllBlogs = ({ allBlogs }) => {
                 <span className="w-[30%] text-center bg-red-600 text-white px-2 py-1 rounded-lg text-xs font-semibold">{category}</span>
                 {/* <p>{short_description}</p> */}
                 {
-                    short_description.length > 100 
-                    ? <p>{short_description.slice(0, 100)} <span className="text-red-500">see more.....</span></p>
+                    short_description.length > 70 
+                    ? <p>{short_description.slice(0, 70)} <span className="text-red-500"> see more.....</span></p>
                     : <p>{short_description}</p>
                 }
                 <div className="card-actions justify-end mt-2 gap-1">
