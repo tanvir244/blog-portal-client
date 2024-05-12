@@ -1,13 +1,12 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import Comments from "../Comments/Comments";
-import Swal from "sweetalert2";
 
 const AllBlog = () => {
     const { user } = useAuth();
     const blogDetails = useLoaderData();
-    const { _id, title, email, short_description, long_description, category, image } = blogDetails;
+    const { _id, title, short_description, long_description, category, image } = blogDetails;
     console.log(blogDetails);
     const [commentValue, setCommentValue] = useState([]);
     const [allComments, setAllComments] = useState([]);
@@ -62,6 +61,17 @@ const AllBlog = () => {
                 </div>
             </div>
 
+            {/* <div className="flex justify-end">
+                {user && user.email === blogDetails.email ? (
+                    <button className="btn bg-teal-500 text-white">Update your blog</button>
+                ) : (
+                    <p>Please wait</p>
+                )}
+            </div> */}
+            <div className="flex justify-end">
+                <Link to={`/update_blog/${_id}`} className="btn bg-teal-500 text-white">Update your blog</Link>
+            </div>
+
             {/* comment section  */}
             <div className="mb-24">
                 <h2 className="mb-8 font-bold text-lg">All Comments</h2>
@@ -94,7 +104,7 @@ const AllBlog = () => {
                 <div className="space-y-8">
                     {
                         allComments.map(comments => <Comments
-                            key={comments.commentId}
+                            key={comments._id}
                             comments={comments}
                         ></Comments>)
                     }
