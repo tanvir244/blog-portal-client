@@ -31,7 +31,7 @@ const AddBlog = () => {
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "Your work has been saved",
+                        title: "Your blog content has been saved",
                         showConfirmButton: false,
                         timer: 1500
                     })

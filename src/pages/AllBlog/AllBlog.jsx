@@ -8,6 +8,7 @@ const AllBlog = () => {
     const blogDetails = useLoaderData();
     const { _id, title, short_description, long_description, category, image } = blogDetails;
     console.log(blogDetails);
+    console.log(user);
     const [commentValue, setCommentValue] = useState([]);
     const [allComments, setAllComments] = useState([]);
 
@@ -61,25 +62,24 @@ const AllBlog = () => {
                 </div>
             </div>
 
-            {/* <div className="flex justify-end">
-                {user && user.email === blogDetails.email ? (
-                    <button className="btn bg-teal-500 text-white">Update your blog</button>
-                ) : (
-                    <p>Please wait</p>
-                )}
-            </div> */}
             <div className="flex justify-end">
-                <Link to={`/update_blog/${_id}`} className="btn bg-teal-500 text-white">Update your blog</Link>
+                {user && user.email === blogDetails.email ? (
+                    <Link to={`/update_blog/${_id}`} className="btn bg-teal-500 text-white">Update your blog</Link>
+                ) : (
+                    <></>
+                )}
             </div>
 
             {/* comment section  */}
             <div className="mb-24">
                 <h2 className="mb-8 font-bold text-lg">All Comments</h2>
                 <div className="flex gap-4 mb-2">
-                    <img className="w-16 h-16 rounded-full" src={user?.photoURL || "https://i.ibb.co/TmsrwQs/user.png"} alt="" />
+                    <img className="w-16 h-16 rounded-full object-cover" src={user?.photoURL || "https://i.ibb.co/TmsrwQs/user.png"} alt="" />
 
                     {user ? (
                         user?.email === blogDetails.email ? (
+                            <p className="flex items-center">You cannot comment on your own blog</p>
+                        ) : (
                             <input
                                 className="text-black p-4 border-b-2 border-b-black w-full"
                                 type="text"
@@ -88,8 +88,6 @@ const AllBlog = () => {
                                 value={commentValue}
                                 onChange={(e) => setCommentValue(e.target.value)}
                             />
-                        ) : (
-                            <p className="flex items-center">You cannot comment on your own blog</p>
                         )
                     ) : (
                         <p className="flex items-center">Login first to comment</p>
