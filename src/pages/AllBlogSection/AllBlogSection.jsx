@@ -6,7 +6,6 @@ const AllBlogSection = () => {
     const allData = useLoaderData();
     const [allBlogs, setAllBlogs] = useState([]);
     const [search, setSearch] = useState('');
-    console.log(search);
 
     useEffect(() => {
         setAllBlogs(allData)
@@ -58,9 +57,9 @@ const AllBlogSection = () => {
                 {
                     allBlogs.filter((item) => {
                         return search.toLowerCase() === '' ? item : item.title.toLowerCase().includes(search);
-                    }).map(allBlogs => <AllBlogs
-                        key={allBlogs._id}
-                        allBlogs={allBlogs}
+                    }).map(allBlog => <AllBlogs
+                        key={allBlog._id}
+                        allBlog={allBlog}
                     ></AllBlogs>)
                 }
             </div>

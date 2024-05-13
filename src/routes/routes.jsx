@@ -9,6 +9,8 @@ import AllBlog from "../pages/AllBlog/AllBlog";
 import SignUp from "../pages/SignUp/SignUp";
 import SignIn from "../pages/SignIn/SignIn";
 import UpdateBlog from "../pages/UpdateBlog/UpdateBlog";
+import Wishlist from "../pages/Wishlist/Wishlist";
+import PrivateRoute from "./PrivateRoute";
 
 
 const routes = createBrowserRouter([
@@ -27,7 +29,7 @@ const routes = createBrowserRouter([
         },
         {
             path: '/add_blog',
-            element: <AddBlog></AddBlog>
+            element: <PrivateRoute><AddBlog></AddBlog></PrivateRoute>
         },
         {
           path: '/all_blogs',
@@ -51,6 +53,11 @@ const routes = createBrowserRouter([
           path: '/update_blog/:id',
           element: <UpdateBlog></UpdateBlog>,
           loader: ({params}) => fetch(`http://localhost:5000/add_blog/${params.id}`)
+        },
+        {
+          path: '/wishlist/:email',
+          element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>,
+          loader: ({params}) => fetch(`http://localhost:5000/wishlists/${params.email}`)
         }
       ]
     },

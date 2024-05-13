@@ -6,10 +6,13 @@ import { useState } from "react";
 // react toastify
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
     const { signIn, googleLogin, githubLogin } = useAuth();
     const [loginError, setLoginError] = useState([]);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSignIn = event => {
         event.preventDefault();
@@ -33,6 +36,8 @@ const SignIn = () => {
                 })
                     .then(() => {
                         form.reset();
+                        // Navigate after login
+                        navigate(location?.state ? location.state : '/');
                     })
             })
             .catch(() => {
@@ -45,6 +50,8 @@ const SignIn = () => {
         googleLogin()
         .then(() => {
             toast.success("Login successful with Google");
+            // navigate after login
+            navigate(location?.state ? location.state : '/');
         })
         .catch(error => {
             console.error(error.message)
@@ -56,6 +63,7 @@ const SignIn = () => {
         githubLogin()
         .then(() => {
             toast.success("Login successful with Github");
+            navigate(location?.state ? location.state : '/');
         })
         .catch(error => {
             console.error(error.message);

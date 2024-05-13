@@ -1,11 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
     const handleLogout = () => {
         logOut()
-            .then()
+            .then(() => {
+                toast.success('Logout successfull');
+            })
             .catch()
     }
 
@@ -14,8 +17,10 @@ const Navbar = () => {
         <li><NavLink to="/add_blog">Add Blog</NavLink></li>
         <li><NavLink to="/all_blogs">All Blogs</NavLink></li>
         <li><NavLink to="/featured_blogs">Featured Blogs</NavLink></li>
-        <li><NavLink to="/wishlist">Wishlist</NavLink></li>
+        <li><NavLink to={`/wishlist/${user?.email}`}>Wishlist</NavLink></li>
     </>
+
+    
 
     return (
         <div className="bg-base-300">
