@@ -13,7 +13,7 @@ const AddBlog = () => {
         const category = form.category.value;
         const short_description = form.short_description.value;
         const long_description = form.long_description.value;
-        const addBlog = { email: user.email, title, image, category, short_description, long_description };
+        const addBlog = { author: user.photoURL, authorName: user.displayName, email: user.email, title, image, category, short_description, long_description };
         console.log(addBlog);
 
         // sending to database 

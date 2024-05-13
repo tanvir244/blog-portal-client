@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useLocation, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
-    const { signIn, googleLogin, githubLogin } = useAuth();
+    const { signIn, googleLogin, githubLogin, setRealTimeUser } = useAuth();
     const [loginError, setLoginError] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
@@ -35,6 +35,10 @@ const SignIn = () => {
                     timer: 2000
                 })
                     .then(() => {
+                        // set realtime user 
+                        setRealTimeUser(email);
+                        console.log(email)
+                        // reset form
                         form.reset();
                         // Navigate after login
                         navigate(location?.state ? location.state : '/');

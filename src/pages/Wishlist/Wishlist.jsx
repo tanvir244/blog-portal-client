@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const Wishlist = () => {
     const { user } = useAuth();
+    
     const wishlistAllItems = useLoaderData();
     const [wishlistItems, setWishListItems] = useState(wishlistAllItems);
     // const { _id, title, short_description, long_description, category, image } = wishlistItems;

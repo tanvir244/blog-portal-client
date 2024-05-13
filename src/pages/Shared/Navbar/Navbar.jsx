@@ -3,7 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
-    const { user, logOut } = useAuth();
+    const { user, logOut, realTimeUser } = useAuth();
     const handleLogout = () => {
         logOut()
             .then(() => {
@@ -11,13 +11,18 @@ const Navbar = () => {
             })
             .catch()
     }
+    console.log(realTimeUser);
 
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/add_blog">Add Blog</NavLink></li>
         <li><NavLink to="/all_blogs">All Blogs</NavLink></li>
         <li><NavLink to="/featured_blogs">Featured Blogs</NavLink></li>
-        <li><NavLink to={`/wishlist/${user?.email}`}>Wishlist</NavLink></li>
+        {/* <li><NavLink to={`/wishlist/${user?.email}`}>Wishlist</NavLink></li> */}
+        {/* <li><NavLink to={`/wishlist/${realTimeUser?.realTimeUser}`}>Wishlist</NavLink></li>*/}
+        {realTimeUser && (
+            <li><NavLink to={`/wishlist/${realTimeUser}`}>Wishlist</NavLink></li>
+        )}
     </>
 
     

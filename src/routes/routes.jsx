@@ -4,7 +4,6 @@ import Home from "../pages/Home/Home/Home";
 import RecentBlogDetail from "../pages/Home/RecentBlogDetail/RecentBlogDetail";
 import AddBlog from "../pages/AddBlog/AddBlog";
 import AllBlogSection from "../pages/AllBlogSection/AllBlogSection";
-// import AllBlogs from "../pages/AllBlogs/AllBlogs";
 import AllBlog from "../pages/AllBlog/AllBlog";
 import SignUp from "../pages/SignUp/SignUp";
 import SignIn from "../pages/SignIn/SignIn";
@@ -12,6 +11,7 @@ import UpdateBlog from "../pages/UpdateBlog/UpdateBlog";
 import Wishlist from "../pages/Wishlist/Wishlist";
 import PrivateRoute from "./PrivateRoute";
 import Error404 from "../pages/Error404/Error404";
+import FeaturedBlogs from "../pages/FeaturedBlogs/FeaturedBlogs";
 
 
 const routes = createBrowserRouter([
@@ -55,6 +55,10 @@ const routes = createBrowserRouter([
           path: '/update_blog/:id',
           element: <UpdateBlog></UpdateBlog>,
           loader: ({params}) => fetch(`http://localhost:5000/add_blog/${params.id}`)
+        },
+        {
+          path: '/featured_blogs',
+          element: <FeaturedBlogs></FeaturedBlogs>
         },
         {
           path: '/wishlist/:email',
