@@ -11,12 +11,14 @@ import SignIn from "../pages/SignIn/SignIn";
 import UpdateBlog from "../pages/UpdateBlog/UpdateBlog";
 import Wishlist from "../pages/Wishlist/Wishlist";
 import PrivateRoute from "./PrivateRoute";
+import Error404 from "../pages/Error404/Error404";
 
 
 const routes = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
+      errorElement: <Error404></Error404>,
       children: [
         {
             path: '/',
