@@ -21,7 +21,7 @@ const FeaturedBlogs = () => {
 
     return (
         <div className="my-12">
-            <h2 className="text-4xl font-bold text-black mb-8 text-center">Top Ten Featured Blogs</h2>
+            <h2 className="text-4xl font-bold text-black mb-8 text-center">Top Ten Featured</h2>
             <div className="py-4 max-w-6xl mx-auto">
                 <div className="w-[90%] mx-auto">
                     <div className="overflow-x-auto border">

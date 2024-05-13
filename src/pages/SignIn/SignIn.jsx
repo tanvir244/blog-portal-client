@@ -52,8 +52,11 @@ const SignIn = () => {
     // login by google 
     const loginByGoogle = () => {
         googleLogin()
-        .then(() => {
+        .then(result => {
             toast.success("Login successful with Google");
+            // set realtime user
+            const email = result.user.email;
+            setRealTimeUser(email);
             // navigate after login
             navigate(location?.state ? location.state : '/');
         })
@@ -65,8 +68,12 @@ const SignIn = () => {
     // login by github
     const loginByGithub = () => {
         githubLogin()
-        .then(() => {
+        .then((result) => {
             toast.success("Login successful with Github");
+            // set realtime user
+            const email = result.user.email;
+            setRealTimeUser(email);
+            // navigate after login
             navigate(location?.state ? location.state : '/');
         })
         .catch(error => {
