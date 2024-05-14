@@ -1,8 +1,17 @@
-# React + Vite
+# Website Name: Blog Portal
+# Website Link: https://blog-portal-auth.web.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Bullet Points 
+* This is the blog portal site for blog content lovers. Using the site, a user can read all blogs and, if they wish, write a new blog for the readers.
+* Users can update their data only and cannot comment on their own written blogs.
+* If a user wishes to add any favorite data, they can add those to the wishlist by clicking the wishlist button, and only the user can see their wishlist section.
+* On the client side, React framework, MongoDB as a database, and Firebase authentication are used to authenticate users, and environment variables are used to securely restrict information.
+* In the backend, Express.js is used, and JWT tokens are used to secure the Express API.
 
-Currently, two official plugins are available:
+# used packages
+* framer motion
+* react-data-table-component
+* swipper slider
+* react toastify
+* sweet alert
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
