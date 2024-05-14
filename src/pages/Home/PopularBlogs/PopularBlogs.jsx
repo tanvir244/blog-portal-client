@@ -33,7 +33,7 @@ const PopularBlogs = () => {
             <motion.div
                 initial={{x: -100, opacity: 0}}
                 whileInView={{x: 0, opacity: 1}}
-                transition={{delay: 0.2, x:{type:"spring", stiffness: 60}}}
+                transition={{delay: 0.3, x:{type:"spring", stiffness: 60}}}
             >
                 <h2 className="text-4xl font-bold text-center mb-12">Popular Blogs</h2>
             </motion.div>

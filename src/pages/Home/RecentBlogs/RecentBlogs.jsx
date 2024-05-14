@@ -74,7 +74,7 @@ const RecentBlogs = ({ recentBlog }) => {
         <motion.div className="card bg-base-100 shadow-2xl"
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.2, x: { type: "spring", stiffness: 60 } }}
+            transition={{ delay: 0.3, x: { type: "spring", stiffness: 60 } }}
         >
             <figure><img className="w-full h-[248px] object-cover" src={image_url} alt="Shoes" /></figure>
             <div className="card-body">
