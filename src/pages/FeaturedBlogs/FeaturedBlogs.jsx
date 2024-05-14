@@ -27,28 +27,32 @@ const FeaturedBlogs = () => {
         {
             name: "Serial No.",
             cell: (row, index) => <span style={{fontSize: "16px", fontWeight: "bold"}}>{index + 1}</span>,
-            width: "110px"
+            width: "110px",
+            sortable: true
         },
         {
             name: "Author Profile",
             cell: row => <img src={row.author} alt={row.name} style={{ width: "120px", height: "120px", borderRadius: 10, objectFit: 'cover' }} />,
-            width: "210px"
+            width: "210px",
+            sortable: true
         },
         {
             name: "Blog Owner",
             cell: row => <div style={{fontWeight: "bold", fontSize: "16px"}}>{row.authorName}</div>,
-            width: "230px"
+            width: "230px",
+            sortable: true
         },
         {
             name: "Blog Title",
-            selector: row => <div style={{fontSize: "14px"}}>{row.title}</div>
+            selector: row => <div style={{fontSize: "14px"}}>{row.title}</div>,
+            sortable: true
         }
     ];
 
     const customStyles = {
         rows: {
             style: {
-                padding: "16px", // Set padding for rows
+                padding: "16px",
             }
         }
     };
