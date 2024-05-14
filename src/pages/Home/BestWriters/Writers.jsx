@@ -26,7 +26,7 @@ const Writers = () => {
 
     // fetch data from database
     useEffect(() => {
-        fetch('http://localhost:5000/authors')
+        fetch('https://blog-portal-server-pink.vercel.app/authors')
             .then(res => res.json())
             .then(data => setAuthors(data))
     }, [])
@@ -34,7 +34,7 @@ const Writers = () => {
     return (
         <div className='my-20'>
             <div>
-                <h2 className='text-2xl md:text-3xl font-bold text-center mb-6'>Writers of The Month</h2>
+                <h2 className='text-2xl md:text-4xl font-bold text-center mb-6'>Writers of The Month</h2>
             </div>
         <Swiper
             spaceBetween={30}
