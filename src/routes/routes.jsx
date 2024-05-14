@@ -27,7 +27,7 @@ const routes = createBrowserRouter([
         {
             path: '/recent_blogs/:id',
             element: <RecentBlogDetail></RecentBlogDetail>,
-            loader: ({params}) => fetch(`http://localhost:5000/recent_blogs/${params.id}`)
+            loader: ({params}) => fetch(`https://blog-portal-server-pink.vercel.app/recent_blogs/${params.id}`)
         },
         {
             path: '/add_blog',
@@ -36,12 +36,11 @@ const routes = createBrowserRouter([
         {
           path: '/all_blogs',
           element: <AllBlogSection></AllBlogSection>
-          // loader: () => fetch('http://localhost:5000/add_blog')
         },
         {
           path: '/added_blog/:id',
           element: <AllBlog></AllBlog>,
-          loader: ({params}) => fetch(`http://localhost:5000/add_blog/${params.id}`)
+          loader: ({params}) => fetch(`https://blog-portal-server-pink.vercel.app/add_blog/${params.id}`)
         },
         {
           path: '/sign_up',
@@ -54,7 +53,7 @@ const routes = createBrowserRouter([
         {
           path: '/update_blog/:id',
           element: <UpdateBlog></UpdateBlog>,
-          loader: ({params}) => fetch(`http://localhost:5000/add_blog/${params.id}`)
+          loader: ({params}) => fetch(`https://blog-portal-server-pink.vercel.app/add_blog/${params.id}`)
         },
         {
           path: '/featured_blogs',
@@ -63,7 +62,6 @@ const routes = createBrowserRouter([
         {
           path: '/wishlist/user',
           element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
-          // loader: ({params}) => fetch(`http://localhost:5000/wishlists/${params.email}`)
         }
       ]
     },

@@ -23,7 +23,7 @@ const UpdateBlog = () => {
         const updateBlog = {email, title, image, category, short_description, long_description };
         console.log(updateBlog);
 
-        fetch(`http://localhost:5000/add_blog/${_id}`, {
+        fetch(`https://blog-portal-server-pink.vercel.app/add_blog/${_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

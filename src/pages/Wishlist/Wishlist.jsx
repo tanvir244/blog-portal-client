@@ -10,7 +10,7 @@ const Wishlist = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/wishlists/${user.email}`)
+        fetch(`https://blog-portal-server-pink.vercel.app/wishlists/${user.email}`, {credentials: 'include'})
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -37,7 +37,7 @@ const Wishlist = () => {
             if (result.isConfirmed) {
 
                 // now find the specific data and delete from the database
-                fetch(`http://localhost:5000/wishlists/${email}/${id}`, {
+                fetch(`https://blog-portal-server-pink.vercel.app/wishlists/${email}/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

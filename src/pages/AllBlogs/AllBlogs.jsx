@@ -16,7 +16,7 @@ const AllBlogs = ({ allBlog }) => {
   }, [user]);
 
   const fetchExpectedWishlistData = (email) => {
-    fetch(`http://localhost:5000/wishlists/${email}`)
+    fetch(`https://blog-portal-server-pink.vercel.app/wishlists/${email}`)
       .then((res) => res.json())
       .then((data) => {
         setExpectedWishlistData(data);
@@ -40,7 +40,7 @@ const AllBlogs = ({ allBlog }) => {
         image,
       };
 
-      fetch("http://localhost:5000/wishlists", {
+      fetch("https://blog-portal-server-pink.vercel.app/wishlists", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

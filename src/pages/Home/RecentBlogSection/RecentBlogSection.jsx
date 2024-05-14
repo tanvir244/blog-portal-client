@@ -6,7 +6,7 @@ const RecentBlogSection = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/recent_blogs')
+        fetch('https://blog-portal-server-pink.vercel.app/recent_blogs')
         .then(res => res.json())
         .then(data => {
             setRecentBlogs(data);

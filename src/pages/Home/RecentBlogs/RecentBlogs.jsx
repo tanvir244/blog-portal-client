@@ -8,7 +8,7 @@ const RecentBlogs = ({ recentBlog }) => {
     const {user} = useAuth();
     const [expectedWishlistData, setExpectedWishlistData] = useState([]);
     const { _id, title, short_description, detail_description, category, image_url } = recentBlog;
-    console.log(recentBlog);
+    // console.log(recentBlog);
 
     useEffect(() => {
         if (user && user.email) {
@@ -17,7 +17,7 @@ const RecentBlogs = ({ recentBlog }) => {
       }, [user]);
 
     const fetchExpectedWishlistData = (email) => {
-        fetch(`http://localhost:5000/wishlists/${email}`)
+        fetch(`https://blog-portal-server-pink.vercel.app/wishlists/${email}`)
           .then((res) => res.json())
           .then((data) => {
             setExpectedWishlistData(data);
@@ -41,7 +41,7 @@ const RecentBlogs = ({ recentBlog }) => {
             image: image_url,
           };
     
-          fetch("http://localhost:5000/wishlists", {
+          fetch("https://blog-portal-server-pink.vercel.app/wishlists", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

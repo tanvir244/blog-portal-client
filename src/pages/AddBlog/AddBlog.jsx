@@ -17,7 +17,7 @@ const AddBlog = () => {
         console.log(addBlog);
 
         // sending to database 
-        fetch('http://localhost:5000/add_blog', {
+        fetch('https://blog-portal-server-pink.vercel.app/add_blog', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

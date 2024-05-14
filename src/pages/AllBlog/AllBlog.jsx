@@ -13,7 +13,7 @@ const AllBlog = () => {
     const [allComments, setAllComments] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/all_comments/${_id}`)
+        fetch(`https://blog-portal-server-pink.vercel.app/all_comments/${_id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -30,7 +30,7 @@ const AllBlog = () => {
 
         // sending to database 
         if (commentValue.length > 0) {
-            fetch('http://localhost:5000/all_comments', {
+            fetch('https://blog-portal-server-pink.vercel.app/all_comments', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -7,7 +7,7 @@ const AllBlogSection = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/add_blog')
+        fetch('https://blog-portal-server-pink.vercel.app/add_blog')
         .then(res => res.json())
         .then(data => {
             console.log(data);

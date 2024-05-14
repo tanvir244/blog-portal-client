@@ -3,7 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
-    const { user, logOut, realTimeUser } = useAuth();
+    const { user, logOut } = useAuth();
     const handleLogout = () => {
         logOut()
             .then(() => {
@@ -11,7 +11,6 @@ const Navbar = () => {
             })
             .catch()
     }
-    console.log(realTimeUser);
 
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
