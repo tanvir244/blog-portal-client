@@ -1,35 +1,40 @@
-import { useLoaderData } from "react-router-dom";
 import AllBlogs from "../AllBlogs/AllBlogs";
 import { useEffect, useState } from "react";
 
 const AllBlogSection = () => {
-    const allData = useLoaderData();
     const [allBlogs, setAllBlogs] = useState([]);
     const [search, setSearch] = useState('');
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        setAllBlogs(allData)
-    }, [allData])
+        fetch('http://localhost:5000/add_blog')
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            setAllBlogs(data);
+            setLoading(false);
+        })
+    }, [])
+
+    if(loading){
+        return <p className="text-center mt-12"><span className="loading loading-spinner loading-lg"></span></p>
+    }
 
     const handleCategoryFilter = filter => {
         if (filter === 'all') {
-            setAllBlogs(allData);
-            console.log(allBlogs);
+            setAllBlogs(allBlogs);
         }
         else if (filter === 'history') {
-            const categoryHistory = allData.filter(data => data.category === 'history');
+            const categoryHistory = allBlogs.filter(data => data.category === 'history');
             setAllBlogs(categoryHistory);
-            console.log(allBlogs);
         }
         else if (filter === 'politics') {
-            const categoryPolitics = allData.filter(data => data.category === 'politics');
+            const categoryPolitics = allBlogs.filter(data => data.category === 'politics');
             setAllBlogs(categoryPolitics);
-            console.log(allBlogs);
         }
         else if (filter === 'economics') {
-            const categoryEconomics = allData.filter(data => data.category === 'economics');
+            const categoryEconomics = allBlogs.filter(data => data.category === 'economics');
             setAllBlogs(categoryEconomics);
-            console.log(allBlogs);
         }
     }
 

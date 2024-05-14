@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import FeaturedBlogItems from "../FeaturedBlogItems/FeaturedBlogItems";
 
 const FeaturedBlogs = () => {
     const [allAddedData, setAllAddedData] = useState([]);
     const [longestDescriptions, setLongestDescriptions] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('http://localhost:5000/add_blog')
@@ -13,8 +13,13 @@ const FeaturedBlogs = () => {
                 setAllAddedData(data);
                 const sortedData = [...data].sort((a, b) => b.long_description.length - a.long_description.length);
                 setLongestDescriptions(sortedData);
+                setLoading(false);
             })
     }, []);
+
+    if(loading){
+        return <p className="text-center mt-12"><span className="loading loading-spinner loading-lg"></span></p>
+    }
 
     console.log(allAddedData);
     console.log(longestDescriptions);

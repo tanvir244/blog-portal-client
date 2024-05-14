@@ -1,10 +1,11 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const UpdateBlog = () => {
     const {user} = useAuth();
     const blogData = useLoaderData();
+    const navigate = useNavigate();
     console.log(blogData);
     
     const { _id, email, title, image, category, short_description, long_description } = blogData;
@@ -38,6 +39,10 @@ const UpdateBlog = () => {
                     text: 'Successfully Updated',
                     icon: 'success',
                     confirmButtonText: 'Okay'
+                  })
+                  .then(() => {
+                    // navigate after updating
+                    navigate('/');
                   })
             }
         })

@@ -7,7 +7,7 @@ const Navbar = () => {
     const handleLogout = () => {
         logOut()
             .then(() => {
-                toast.success('Logout successfull');
+                toast.warning('User Logged out');
             })
             .catch()
     }
@@ -18,14 +18,10 @@ const Navbar = () => {
         <li><NavLink to="/add_blog">Add Blog</NavLink></li>
         <li><NavLink to="/all_blogs">All Blogs</NavLink></li>
         <li><NavLink to="/featured_blogs">Featured Blogs</NavLink></li>
-        {/* <li><NavLink to={`/wishlist/${user?.email}`}>Wishlist</NavLink></li> */}
-        {/* <li><NavLink to={`/wishlist/${realTimeUser?.realTimeUser}`}>Wishlist</NavLink></li>*/}
-        {realTimeUser && (
-            <li><NavLink to={`/wishlist/${realTimeUser}`}>Wishlist</NavLink></li>
-        )}
+        <li><NavLink to="/wishlist/user">Wishlist</NavLink></li>
     </>
 
-    
+
 
     return (
         <div className="bg-base-300">

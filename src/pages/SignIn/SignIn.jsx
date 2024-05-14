@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useLocation, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
-    const { signIn, googleLogin, githubLogin, setRealTimeUser } = useAuth();
+    const { signIn, googleLogin, githubLogin } = useAuth();
     const [loginError, setLoginError] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
@@ -35,9 +35,6 @@ const SignIn = () => {
                     timer: 2000
                 })
                     .then(() => {
-                        // set realtime user 
-                        setRealTimeUser(email);
-                        console.log(email)
                         // reset form
                         form.reset();
                         // Navigate after login
@@ -52,11 +49,8 @@ const SignIn = () => {
     // login by google 
     const loginByGoogle = () => {
         googleLogin()
-        .then(result => {
+        .then(() => {
             toast.success("Login successful with Google");
-            // set realtime user
-            const email = result.user.email;
-            setRealTimeUser(email);
             // navigate after login
             navigate(location?.state ? location.state : '/');
         })
@@ -68,11 +62,8 @@ const SignIn = () => {
     // login by github
     const loginByGithub = () => {
         githubLogin()
-        .then((result) => {
+        .then(() => {
             toast.success("Login successful with Github");
-            // set realtime user
-            const email = result.user.email;
-            setRealTimeUser(email);
             // navigate after login
             navigate(location?.state ? location.state : '/');
         })

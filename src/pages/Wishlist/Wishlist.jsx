@@ -1,34 +1,60 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Wishlist = () => {
     const { user } = useAuth();
-    
-    const wishlistAllItems = useLoaderData();
-    const [wishlistItems, setWishListItems] = useState(wishlistAllItems);
-    // const { _id, title, short_description, long_description, category, image } = wishlistItems;
+    const [wishlistItems, setWishListItems] = useState([]);
     const { _id, title, short_description, category, image } = wishlistItems;
-    console.log(wishlistItems);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/wishlists/${user.email}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            setWishListItems(data);
+            setLoading(false);
+        })
+    }, [user.email]);
+
+    if(loading){
+        return <p className="text-center mt-12"><span className="loading loading-spinner loading-lg"></span></p>
+    }
 
     const handleDelete = (email, id) => {
-        fetch(`http://localhost:5000/wishlists/${email}/${id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.deletedCount > 0) {
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your item has been deleted.",
-                        icon: "success"
-                    });
-                    const remaining = wishlistAllItems.filter(itm => itm._id !== id);
-                    setWishListItems(remaining);
-                }
-            })
+
+        Swal.fire({
+            title: "Are you sure you want to Remove?",
+            text: "This blog will permanently remove",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#00000",
+            confirmButtonText: "Yes, remove it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                // now find the specific data and delete from the database
+                fetch(`http://localhost:5000/wishlists/${email}/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your blog has been deleted.",
+                                icon: "success"
+                            });
+                            const remaining = wishlistItems.filter(itm => itm._id !== id);
+                            setWishListItems(remaining);
+                        }
+                    })
+            }
+        });
     }
 
     return (
@@ -67,7 +93,7 @@ const Wishlist = () => {
                                     <button
                                         onClick={() => handleDelete(user.email, wishlistItem._id)}
                                         className="btn bg-red-600 hover:bg-white hover:text-red-600 text-white"
-                                    >Delete
+                                    >Remove
                                     </button>
                                 </div>
                             </div>

@@ -3,14 +3,20 @@ import RecentBlogs from "../RecentBlogs/RecentBlogs";
 
 const RecentBlogSection = () => {
     const [recentBlogs, setRecentBlogs] = useState([]); 
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('http://localhost:5000/recent_blogs')
         .then(res => res.json())
         .then(data => {
             setRecentBlogs(data);
+            setLoading(false);
         })
-    }, [])
+    }, []);
+
+    if(loading){
+        return <p className="text-center mt-12"><span className="loading loading-spinner loading-lg"></span></p>
+    }
 
     return (
         <div className="my-16">

@@ -35,8 +35,8 @@ const routes = createBrowserRouter([
         },
         {
           path: '/all_blogs',
-          element: <AllBlogSection></AllBlogSection>,
-          loader: () => fetch('http://localhost:5000/add_blog')
+          element: <AllBlogSection></AllBlogSection>
+          // loader: () => fetch('http://localhost:5000/add_blog')
         },
         {
           path: '/added_blog/:id',
@@ -61,9 +61,9 @@ const routes = createBrowserRouter([
           element: <FeaturedBlogs></FeaturedBlogs>
         },
         {
-          path: '/wishlist/:email',
-          element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/wishlists/${params.email}`)
+          path: '/wishlist/user',
+          element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
+          // loader: ({params}) => fetch(`http://localhost:5000/wishlists/${params.email}`)
         }
       ]
     },

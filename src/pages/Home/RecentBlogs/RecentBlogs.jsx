@@ -1,7 +1,73 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
 
 const RecentBlogs = ({ recentBlog }) => {
-    const { _id, title, short_description, category, image_url } = recentBlog;
+    const {user} = useAuth();
+    const [expectedWishlistData, setExpectedWishlistData] = useState([]);
+    const { _id, title, short_description, detail_description, category, image_url } = recentBlog;
+    console.log(recentBlog);
+
+    useEffect(() => {
+        if (user && user.email) {
+          fetchExpectedWishlistData(user.email);
+        }
+      }, [user]);
+
+    const fetchExpectedWishlistData = (email) => {
+        fetch(`http://localhost:5000/wishlists/${email}`)
+          .then((res) => res.json())
+          .then((data) => {
+            setExpectedWishlistData(data);
+          })
+          .catch((error) => {
+            console.error("Error fetching expected wishlist data:", error);
+          });
+      };
+    
+      const handleWishlist = (id) => {
+        const checkDuplicate = expectedWishlistData.find((data) => data.id === id);
+    
+        if (!checkDuplicate) {
+          const newWishlist = {
+            id: _id,
+            whoAddedWishlist: user.email,
+            title,
+            short_description,
+            long_description: detail_description,
+            category,
+            image: image_url,
+          };
+    
+          fetch("http://localhost:5000/wishlists", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newWishlist),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.insertedId) {
+                toast.success("The blog added to your Wishlist");
+                // After adding the item to the wishlist, fetch updated wishlist data
+                fetchExpectedWishlistData(user.email);
+              }
+            })
+            .catch((error) => {
+              console.error("Error adding blog to wishlist:", error);
+            });
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Not Again",
+                text: "This blog already added to your Wishlist",
+              });
+        }
+      };
 
     return (
         <div className="card bg-base-100 shadow-2xl">
@@ -14,7 +80,7 @@ const RecentBlogs = ({ recentBlog }) => {
                     <Link to={`/recent_blogs/${_id}`}>
                         <button className="btn bg-slate-700 hover:bg-white hover:text-black text-white">View Details</button>
                     </Link>
-                    <button className="btn bg-green-600 hover:bg-white hover:text-green-600 text-white">Wishlist</button>
+                    <button onClick={() => handleWishlist(_id)} className="btn bg-green-600 hover:bg-white hover:text-green-600 text-white">Wishlist</button>
                 </div>
             </div>
         </div>
