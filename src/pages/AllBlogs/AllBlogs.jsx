@@ -16,7 +16,7 @@ const AllBlogs = ({ allBlog }) => {
   }, [user]);
 
   const fetchExpectedWishlistData = (email) => {
-    fetch(`https://blog-portal-server-pink.vercel.app/wishlists/${email}`)
+    fetch(`https://blog-portal-server-pink.vercel.app/wishlists/${email}`, {credentials: 'include'})
       .then((res) => res.json())
       .then((data) => {
         setExpectedWishlistData(data);

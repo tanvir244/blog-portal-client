@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 const AllBlogSection = () => {
     const [allBlogs, setAllBlogs] = useState([]);
+    const [filteredBlogs, setFilteredBlogs] = useState([]);
     const [search, setSearch] = useState('');
     const [loading, setLoading] = useState(true);
 
@@ -12,6 +13,7 @@ const AllBlogSection = () => {
         .then(data => {
             console.log(data);
             setAllBlogs(data);
+            setFilteredBlogs(data);
             setLoading(false);
         })
     }, [])
@@ -21,20 +23,22 @@ const AllBlogSection = () => {
     }
 
     const handleCategoryFilter = filter => {
+        console.log(filter);
+
         if (filter === 'all') {
-            setAllBlogs(allBlogs);
+            setFilteredBlogs(allBlogs);
         }
         else if (filter === 'history') {
             const categoryHistory = allBlogs.filter(data => data.category === 'history');
-            setAllBlogs(categoryHistory);
+            setFilteredBlogs(categoryHistory);
         }
         else if (filter === 'politics') {
             const categoryPolitics = allBlogs.filter(data => data.category === 'politics');
-            setAllBlogs(categoryPolitics);
+            setFilteredBlogs(categoryPolitics);
         }
         else if (filter === 'economics') {
             const categoryEconomics = allBlogs.filter(data => data.category === 'economics');
-            setAllBlogs(categoryEconomics);
+            setFilteredBlogs(categoryEconomics);
         }
     }
 
@@ -60,7 +64,7 @@ const AllBlogSection = () => {
 
             <div className="w-[90%] md:max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-12">
                 {
-                    allBlogs.filter((item) => {
+                    filteredBlogs.filter((item) => {
                         return search.toLowerCase() === '' ? item : item.title.toLowerCase().includes(search);
                     }).map(allBlog => <AllBlogs
                         key={allBlog._id}
