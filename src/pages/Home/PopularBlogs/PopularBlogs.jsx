@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+// framer motion
+import { motion } from "framer-motion";
+// import { fadeIn } from "../../../variants";
+
 const PopularBlogs = () => {
     const [allAddedData, setAllAddedData] = useState([]);
     const [longestDescriptions, setLongestDescriptions] = useState([]);
@@ -26,11 +30,22 @@ const PopularBlogs = () => {
 
     return (
         <div className="my-16">
-            <h2 className="text-4xl font-bold text-center mb-12">Popular Blogs</h2>
+            <motion.div
+                initial={{x: -100, opacity: 0}}
+                whileInView={{x: 0, opacity: 1}}
+                transition={{delay: 0.2, x:{type:"spring", stiffness: 60}}}
+            >
+                <h2 className="text-4xl font-bold text-center mb-12">Popular Blogs</h2>
+            </motion.div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {
                     longestDescriptions.slice(0, 6).map(longestDescription => (
-                        <div key={longestDescription._id} className="flex flex-col md:flex-row gap-6 p-4 border shadow-2xl h-full rounded-lg">
+                        <motion.div key={longestDescription._id} className="flex flex-col md:flex-row gap-6 p-4 border shadow-2xl h-full rounded-lg"
+                        
+                        initial={{x: -100, opacity: 0}}
+                        whileInView={{x: 0, opacity: 1}}
+                        transition={{delay: 0.2, x:{type:"spring", stiffness: 60}}}
+                        >
                             <div className="w-full md:w-[45%] h-[218px]">
                                 <img className="w-full h-full object-cover rounded-lg" src={longestDescription.image} alt="" />
                             </div>
@@ -49,7 +64,7 @@ const PopularBlogs = () => {
                                     </div>
                                 </Link>
                             </div>
-                        </div>
+                        </motion.div>
                     ))
                 }
             </div>
