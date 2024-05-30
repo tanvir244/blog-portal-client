@@ -18,6 +18,7 @@ const Navbar = () => {
         <li><NavLink to="/all_blogs">All Blogs</NavLink></li>
         <li><NavLink to="/featured_blogs">Featured Blogs</NavLink></li>
         <li><NavLink to="/wishlist/user">Wishlist</NavLink></li>
+        { user ? <li><NavLink to="/my_info">My Info</NavLink></li> : <></>}
     </>
 
 

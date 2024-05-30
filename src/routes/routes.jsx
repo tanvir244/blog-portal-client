@@ -12,6 +12,7 @@ import Wishlist from "../pages/Wishlist/Wishlist";
 import PrivateRoute from "./PrivateRoute";
 import Error404 from "../pages/Error404/Error404";
 import FeaturedBlogs from "../pages/FeaturedBlogs/FeaturedBlogs";
+import MyInfo from "../pages/MyInfo/MyInfo";
 
 
 const routes = createBrowserRouter([
@@ -62,6 +63,10 @@ const routes = createBrowserRouter([
         {
           path: '/wishlist/user',
           element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
+        },
+        {
+          path: '/my_info',
+          element: <MyInfo></MyInfo>
         }
       ]
     },
